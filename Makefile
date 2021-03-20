@@ -36,7 +36,7 @@ ${NAME_PS}:	${OBJS_C} ${OBJS_PS}
 			@echo "$(GREEN)[checker done][✔]$(RESET)"
 			@echo "$(BLUE)Compiling files..."
 			@gcc ${FLAGS} ${OBJS_PS} ${LIBFT}/libft.a -o ${NAME_PS} > /dev/null
-			@echo "$(GREEN)[swap_push done][✔]$(RESET)"
+			@echo "$(GREEN)[push_swap done][✔]$(RESET)"
 
 all:		${NAME_PS}
 
