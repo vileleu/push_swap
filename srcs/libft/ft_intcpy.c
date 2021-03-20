@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_intcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vico <vico@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 19:04:16 by vileleu           #+#    #+#             */
-/*   Updated: 2021/03/18 21:05:06 by vico             ###   ########.fr       */
+/*   Created: 2021/03/19 23:23:29 by vico              #+#    #+#             */
+/*   Updated: 2021/03/20 17:22:40 by vico             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+int		*ft_intcpy(int *tab, int m)
 {
-	size_t i;
+	int		*new;
+	int		i;
 
-	i = 0;
-	if (!s)
-		return (i);
-	while (s[i] != '\0')
-		i++;
-	return (i);
+	if (!tab)
+		return (NULL);
+	if (!(new = malloc(sizeof(int) * m)))
+		return (NULL);
+	i = -1;
+	while (++i < m)
+		new[i] = tab[i];
+	return (new);
 }

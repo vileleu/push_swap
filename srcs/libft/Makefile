@@ -7,7 +7,7 @@ ORANGE = 	\033[0;33m
 MAGENTA = 	\033[0;35m
 RESET = 	\033[0m
 
-SRCS		= $(wildcard *.c)
+SRCS		= $(wildcard ./*.c)
 
 OBJS		= ${SRCS:.c=.o}
 
@@ -26,7 +26,7 @@ COMP		= 1
 
 ${NAME}:	${OBJS}
 			@ar rc ${NAME} ${OBJS}
-			@echo "\n$(GREEN)[libft done]$(BLUE)"
+			@echo "\n$(GREEN)[libft done][✔]$(BLUE)"
 
 all:		${NAME}
 

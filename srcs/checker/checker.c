@@ -6,13 +6,13 @@
 /*   By: vico <vico@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 20:32:55 by vico              #+#    #+#             */
-/*   Updated: 2021/03/16 01:37:41 by vico             ###   ########.fr       */
+/*   Updated: 2021/03/17 19:41:53 by vico             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-int		save_line(t_o *check, char *line)
+int		save_line(t_c *check, char *line)
 {
 	t_list	*tmp;
 	char	*cpy;
@@ -35,7 +35,7 @@ int		save_line(t_o *check, char *line)
 	return (1);
 }
 
-int		commandes(t_o *c, t_list *tmp)
+int		actions_c(t_c *c, t_list *tmp)
 {
 	if (!ft_strcmp(tmp->content, "sa"))
 		return (swap(&(c->sta), c->ma));
@@ -56,13 +56,13 @@ int		commandes(t_o *c, t_list *tmp)
 	if (!ft_strcmp(tmp->content, "rra"))
 		return (rrotation(&(c->sta), c->ma));
 	if (!ft_strcmp(tmp->content, "rrb"))
-		return (rrotation(&(c->sta), c->ma));
+		return (rrotation(&(c->stb), c->mb));
 	if (!ft_strcmp(tmp->content, "rrr"))
 		return (rrotation_d(&(c->sta), c->ma, &(c->stb), c->mb));
 	return (-1);
 }
 
-int		loop(t_o *c)
+int		loop_c(t_c *c)
 {
 	t_list	*tmp;
 	char	*line;
@@ -80,7 +80,7 @@ int		loop(t_o *c)
 	tmp = c->line;
 	while (tmp)
 	{
-		if (!(ret = commandes(c, tmp)))
+		if (!(ret = actions_c(c, tmp)))
 			return (print_err(ERR_M));
 		if (ret == -1)
 			return (print_err(ERR));
@@ -91,12 +91,14 @@ int		loop(t_o *c)
 
 int		main(int ac, char **av)
 {
-	t_o		check;
+	t_c		check;
 
-	init_check(&check, ac - 1);
-	if (!(parsing(&check, av)))
+	if (ac == 1)
 		return (0);
-	if (!(loop(&check)))
+	init_check(&check, ac - 1);
+	if (!(parsing_c(&check, av)))
+		return (0);
+	if (!(loop_c(&check)))
 		return (free_check(&check));
 	ft_putnbr_fd(check.ope, 1);
 	ft_putstr_fd(" operations\n", 1);

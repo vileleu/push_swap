@@ -1,50 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   parsing_ps.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vico <vico@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/14 17:38:45 by vico              #+#    #+#             */
-/*   Updated: 2021/03/16 01:41:54 by vico             ###   ########.fr       */
+/*   Created: 2021/03/16 18:23:19 by vico              #+#    #+#             */
+/*   Updated: 2021/03/20 16:32:37 by vico             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-int		print_err(char *msg)
+int		parsing_ps(t_ps *ps, char **av)
 {
-	ft_putstr_fd(msg, 2);
-	return (0);
-}
-
-int		free_err(char *s)
-{
-	free(s);
-	return (0);
-}
-
-int		print_free_err(char *msg, char *s)
-{
-	ft_putstr_fd(msg, 2);
-	free(s);
-	return (0);
-}
-
-int		free_check(t_o *check)
-{
-	t_list	*tmp;
-
-	if (check->ma)
-		free(check->sta);
-	if (check->mb)
-		free(check->stb);
-	while (check->line)
+	if (!(check_av(av)))
+		return (print_err(ERR));
+	if (max_min(av, "+2147483647", "-2147483648") < 0)
+		return (print_err(ERR));
+	if (!(ps->sta = create_stack(av, ps->ma)))
+		return (print_err(ERR_M));
+	if (!(no_duplicates(ps->sta, ps->ma)))
 	{
-		tmp = check->line;
-		check->line = check->line->next;
-		free(tmp->content);
-		free(tmp);
+		free(ps->sta);
+		return (print_err(ERR));
 	}
-	return (0);
+	return (1);
 }

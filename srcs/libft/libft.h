@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vileleu <vileleu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vico <vico@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 15:52:19 by vileleu           #+#    #+#             */
-/*   Updated: 2020/10/25 18:16:42 by vileleu          ###   ########.fr       */
+/*   Updated: 2021/03/19 23:27:42 by vico             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int				ft_toupper(int c);
 char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void			*ft_calloc(size_t count, size_t size);
 char			*ft_strdup(const char *s1);
+int				*ft_intcpy(int *tab, int m);
 
 /*
 **MANIPULATION DE FICHIERS
