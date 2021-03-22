@@ -6,7 +6,7 @@
 /*   By: vico <vico@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 01:25:40 by vico              #+#    #+#             */
-/*   Updated: 2021/03/20 16:10:15 by vico             ###   ########.fr       */
+/*   Updated: 2021/03/22 01:39:54 by vico             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,20 +44,20 @@ int		which_rota(t_ps *ps, int med)
 
 	i = 0;
 	j = ps->ma;
-	while (ps->ma > 2 && ++i < ps->ma && --j > 0)
+	while (ps->ma > 4 && ++i < ps->ma && --j > 0)
 	{
-		while (ps->ma > 2 && i == 1 && ps->sta[0] < med)
+		while (ps->ma > 4 && i == 1 && ps->sta[0] < med)
 		{
 			if (!(actions_ps(ps, "pb")))
 				return (0);
 			j = ps->ma - 1;
 		}
-		if (ps->ma > 2 && ps->sta[i] < med)
+		if (ps->ma > 4 && ps->sta[i] < med)
 		{
 			if (!(find_rota(ps, "ra", &i, &j)))
 				return (0);
 		}
-		else if (ps->ma > 2 && ps->sta[j] < med)
+		else if (ps->ma > 4 && ps->sta[j] < med)
 		{
 			if (!(find_rota(ps, "rra", &i, &j)))
 				return (0);
@@ -79,14 +79,14 @@ int		loop_ps(t_ps *ps)
 	if (ps->sta[0] > ps->sta[1] && !actions_ps(ps, "sa"))
 		return (0);
 	ret = 1;
-	while (ret == 1 && ps->ma > 2)
+	while (ret == 1 && ps->ma > 4)
 	{
 		if (!(mediane(ps, ps->sta, ps->ma)))
 			return (0);
 		if (!(ret = which_rota(ps, ps->med)))
 			return (0);
 	}
-	if (ps->ma == 2 && !is_sort(ps->sta, ps->ma) && !actions_ps(ps, "sa"))
+	if (ps->ma == 4 && !sort_four(ps))
 		return (0);
 	if (!(push_higher(ps)))
 		return (0);

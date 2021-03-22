@@ -6,7 +6,7 @@
 /*   By: vico <vico@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 20:45:11 by vico              #+#    #+#             */
-/*   Updated: 2021/03/19 23:14:29 by vico             ###   ########.fr       */
+/*   Updated: 2021/03/22 01:44:30 by vico             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,4 +87,31 @@ int		sort_three(t_ps *ps, int *st, int m)
 	else if (st[1] == max && st[2] == min)
 		return (actions_ps(ps, "rra"));
 	return (0);
+}
+
+int		sort_four(t_ps *ps)
+{
+	int		min;
+
+	min = get_min(ps->sta, ps->ma);
+	if (min == 1 && !actions_ps(ps, "ra"))
+		return (0);
+	else if (min == 2 && (!actions_ps(ps, "ra") || !actions_ps(ps, "ra")))
+		return (0);
+	else if (min == 3 && !actions_ps(ps, "rra"))
+		return (0);
+	if (!actions_ps(ps, "pb"))
+		return (0);
+	min = get_min(ps->sta, ps->ma);
+	if (min == 1 && !actions_ps(ps, "ra"))
+		return (0);
+	else if (min == 2 && (!actions_ps(ps, "ra") || !actions_ps(ps, "ra")))
+		return (0);
+	else if (min == 3 && !actions_ps(ps, "rra"))
+		return (0);
+	if (!actions_ps(ps, "pb"))
+		return (0);
+	if (ps->sta[0] > ps->sta[1])
+		return (actions_ps(ps, "sa"));
+	return (1);
 }

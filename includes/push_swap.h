@@ -6,7 +6,7 @@
 /*   By: vico <vico@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 20:34:48 by vico              #+#    #+#             */
-/*   Updated: 2021/03/20 16:07:01 by vico             ###   ########.fr       */
+/*   Updated: 2021/03/22 01:41:16 by vico             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ int				rrotation_d(int **sta, int maxa, int **stb, int maxb);
 */
 
 int				sort_three(t_ps *ps, int *st, int m);
+int				sort_four(t_ps *ps);
 
 /*
 ** algo #1

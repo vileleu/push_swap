@@ -23,7 +23,7 @@ LIBFT		= srcs/libft/
 
 HEADERS		= -I includes/
 
-FLAGS		= -Wall -Wextra -Werror -g3 -fsanitize=address
+FLAGS		= -Wall -Wextra -Werror
 
 .c.o:		
 			@gcc ${FLAGS} ${HEADERS} -I ${LIBFT} -c $< -o ${<:.c=.o} > /dev/null
