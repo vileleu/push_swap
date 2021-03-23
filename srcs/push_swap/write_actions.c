@@ -6,7 +6,7 @@
 /*   By: vico <vico@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 00:44:56 by vico              #+#    #+#             */
-/*   Updated: 2021/03/20 17:25:45 by vico             ###   ########.fr       */
+/*   Updated: 2021/03/23 20:51:13 by vico             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,17 @@ int		replace_print(char **prt, char *act, int *beg, int *len)
 	tmp[i] = '\0';
 	if (!(tmp = ft_strjoin(tmp, act)))
 		return (print_free_err(ERR_M, tmp));
-	if (!(new = ft_strdup((*prt) + *beg + ft_strlen(act) * 2)))
+	if (!(new = ft_strdup(*prt + *beg + ft_strlen(act) * 2)))
 		return (print_free_err(ERR_M, tmp));
-	free((*prt));
-	if (!((*prt) = ft_strjoin(tmp, new)))
+	free(*prt);
+	if (!(*prt = ft_strjoin(tmp, new)))
 	{
 		free(new);
 		return (print_free_err(ERR_M, tmp));
 	}
 	free(new);
-	*len = ft_strlen((*prt));
-	*beg = -1;
+	*len = ft_strlen(*prt);
+	*beg = *beg + ft_strlen(act);
 	return (1);
 }
 
@@ -53,11 +53,11 @@ int		cut_print(char **prt, int len)
 		else if (i >= 0 && !ft_strncmp(*prt + i, "sb\nsa\n", 6) && \
 		!replace_print(prt, "ss\n", &i, &len))
 			return (0);
-		else if (i >= 0 && !ft_strncmp(*prt + i, "ra\nrb\n", 6) && \
-		!replace_print(prt, "rr\n", &i, &len))
+		else if (i >= 0 && !ft_strncmp(*prt + i, "ra\nrb\n", 6) && (i == 0 \
+		|| (*prt)[i - 1] != 'r') && !replace_print(prt, "rr\n", &i, &len))
 			return (0);
-		else if (i >= 0 && !ft_strncmp(*prt + i, "rb\nra\n", 6) && \
-		!replace_print(prt, "rr\n", &i, &len))
+		else if (i >= 0 && !ft_strncmp(*prt + i, "rb\nra\n", 6) && (i == 0 \
+		|| (*prt)[i - 1] != 'r') && !replace_print(prt, "rr\n", &i, &len))
 			return (0);
 		else if (i >= 0 && !ft_strncmp(*prt + i, "rra\nrrb\n", 8) && \
 		!replace_print(prt, "rrr\n", &i, &len))
@@ -79,12 +79,12 @@ int		write_print(char **prt, char *act)
 		return (print_free_err(ERR_M, cpy));
 	if (!(*prt))
 	{
-		if (!((*prt) = ft_strdup(cpy)))
+		if (!(*prt = ft_strdup(cpy)))
 			return (print_free_err(ERR_M, cpy));
 	}
 	else
 	{
-		if (!((*prt) = ft_strjoin((*prt), cpy)))
+		if (!(*prt = ft_strjoin(*prt, cpy)))
 			return (print_free_err(ERR_M, cpy));
 	}
 	free(cpy);

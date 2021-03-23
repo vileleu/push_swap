@@ -6,15 +6,15 @@
 /*   By: vico <vico@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 20:34:48 by vico              #+#    #+#             */
-/*   Updated: 2021/03/22 01:41:16 by vico             ###   ########.fr       */
+/*   Updated: 2021/03/22 23:56:46 by vico             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# define ERR_M "MALLOC FAILED\n"
-# define ERR "ERROR\n"
+# define ERR_M "Malloc failed\n"
+# define ERR "Error\n"
 
 # include <stdio.h>
 # include "../srcs/libft/libft.h"
@@ -88,6 +88,7 @@ int				rrotation_d(int **sta, int maxa, int **stb, int maxb);
 
 int				sort_three(t_ps *ps, int *st, int m);
 int				sort_four(t_ps *ps);
+int				magic_sort(t_ps *ps);
 
 /*
 ** algo #1
