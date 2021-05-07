@@ -6,7 +6,7 @@
 /*   By: vico <vico@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 18:22:20 by vico              #+#    #+#             */
-/*   Updated: 2021/03/17 19:41:21 by vico             ###   ########.fr       */
+/*   Updated: 2021/04/29 20:25:07 by vico             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,17 @@ int		max_min(char **av, char *max, char *min)
 		{
 			if ((int)ft_strlen(av[i]) > 10 + j)
 				return (-1);
-			else if ((int)ft_strlen(av[i]) == 10 + j)
-				return (ft_strcmp(max + 1 - j, av[i]));
+			else if ((int)ft_strlen(av[i]) == 10 + j && \
+			ft_strcmp(max + 1 - j, av[i]) < 0)
+				return (-1);
 		}
 		else if (av[i][0] == '-' && !j++)
 		{
 			if ((int)ft_strlen(av[i]) > 10 + j)
 				return (-1);
-			else if ((int)ft_strlen(av[i]) == 10 + j)
-				return (ft_strcmp(min, av[i]));
+			else if ((int)ft_strlen(av[i]) == 10 + j && \
+			ft_strcmp(min, av[i]) < 0)
+				return (-1);
 		}
 	}
 	return (1);

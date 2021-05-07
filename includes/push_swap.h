@@ -6,7 +6,7 @@
 /*   By: vico <vico@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 20:34:48 by vico              #+#    #+#             */
-/*   Updated: 2021/03/22 23:56:46 by vico             ###   ########.fr       */
+/*   Updated: 2021/03/23 21:15:38 by vico             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,5 @@ int				get_min(int *st, int m);
 
 int				compare(t_ps *ps);
 int				cut_print(char **prt, int len);
-
-void			print_st(t_ps *ps, int *st, int m);
 
 #endif

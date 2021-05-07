@@ -6,7 +6,7 @@
 /*   By: vico <vico@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 20:32:55 by vico              #+#    #+#             */
-/*   Updated: 2021/03/23 21:10:53 by vico             ###   ########.fr       */
+/*   Updated: 2021/03/23 21:14:45 by vico             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,6 @@ int		main(int ac, char **av)
 		return (0);
 	if (!(loop_c(&check)))
 		return (free_check(&check));
-	ft_putnbr_fd(check.ope, 1);
-	ft_putstr_fd(" operations\n", 1);
 	if (is_sort(check.sta, check.ma) && !check.stb && !check.mb)
 		ft_putstr_fd("OK\n", 1);
 	else

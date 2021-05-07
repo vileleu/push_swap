@@ -6,7 +6,7 @@
 /*   By: vico <vico@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 17:59:05 by vico              #+#    #+#             */
-/*   Updated: 2021/03/23 21:05:08 by vico             ###   ########.fr       */
+/*   Updated: 2021/03/23 21:15:02 by vico             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,25 +72,6 @@ int		under_hundred(t_ps *ps)
 		return (free_ps(ps));
 	ft_putstr_fd(ps->pr, 1);
 	return (free_ps(ps));
-}
-
-void	print_st(t_ps *ps, int *st, int m)
-{
-	int		i;
-
-	i = -1;
-	while (++i < ps->mb + m)
-	{
-		if (i < m)
-			printf("st[%2d] = %5d |", i, st[i]);
-		else
-			printf("-------------- |");
-		if (i < ps->mb)
-			printf(" stb[%2d] = %5d\n", i, ps->stb[i]);
-		else
-			printf(" ---------------\n");
-	}
-	printf("\n");
 }
 
 int		main(int ac, char **av)
